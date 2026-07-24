@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0B0E14" />
+<title>ClickAndFixx — Click. And it's fixed.</title>
+<meta name="description" content="The fix-it studio for small business. Websites, automations, tracking, internal tools — we find the broken part and engineer the fix. Free diagnosis, fixed prices." />
+
+<meta property="og:title" content="ClickAndFixx — Click. And it's fixed." />
+<meta property="og:description" content="The fix-it studio for small business. Websites, automations, tracking, internal tools — we find the broken part and engineer the fix." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js" } }
+</script>
+</head>
+<body class="is-broken">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="cursor-ring" aria-hidden="true"><span class="cursor-label"></span></div>
+<div class="scanline" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top" aria-label="ClickAndFixx home">
+      <span class="logo-broken" aria-hidden="true">Cl_ck&amp;F_xx</span>
+      <span class="logo-fixed">ClickAndFi<b>xx</b></span>
+    </a>
+    <div class="status-chip" aria-live="polite">
+      <span class="dot"></span>
+      <span id="chipText">4 systems down</span>
+    </div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#fixes">What we fix</a>
+      <a href="#process">Process</a>
+      <a href="#proof">Proof</a>
+      <a href="#pricing">Pricing</a>
+      <a class="nav-cta" href="#diagnosis" data-cursor="start">Free diagnosis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= S1 · HERO ================= -->
+<section id="top" class="hero" aria-label="Introduction">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <p class="eyebrow mono">// CLICKANDFIXX — DIAGNOSTIC MODE</p>
+    <h1 class="hero-headline">
+      <span class="glitch-line" data-text="Something in your">Something in your</span>
+      <span class="glitch-line" data-text="business is">business is</span>
+      <span class="glitch-line hero-word" data-broken="broken." data-fixed="fixed.">broken.</span>
+    </h1>
+    <p class="hero-sub">A website that doesn't sell. Leads that vanish. Hours lost to copy-paste. We're the engineering studio that finds the broken part of your business — and fixes it. Websites, automations, tracking, tools.</p>
+
+    <button type="button" class="fix-prompt mono" id="fixPrompt" data-cursor="fix it">[ click anywhere to fix it ]</button>
+
+    <div class="hero-ctas" id="heroCtas" hidden>
+      <a href="#diagnosis" class="btn btn-primary" data-cursor="start">Get a free diagnosis</a>
+      <a href="#fixes" class="btn btn-ghost" data-cursor="explore">See what we fix ↓</a>
+    </div>
+  </div>
+
+  <!-- Diagnostic HUD: flips FAIL -> OK when the system is fixed -->
+  <div class="hud mono" id="hud" aria-hidden="true">
+    <p class="hud-title">SYSTEM CHECK</p>
+    <p data-sys="website"><span>website</span><b class="fail">FAIL</b></p>
+    <p data-sys="leadflow"><span>lead flow</span><b class="fail">FAIL</b></p>
+    <p data-sys="tracking"><span>tracking</span><b class="fail">FAIL</b></p>
+    <p data-sys="workflow"><span>workflows</span><b class="fail">FAIL</b></p>
+  </div>
+
+  <div class="scroll-cue mono" aria-hidden="true"><span>scroll to inspect</span><i></i></div>
+</section>
+
+<!-- ================= S2 · DIAGNOSTIC MARQUEE ================= -->
+<section class="marquee-section" aria-label="Fixes shipped">
+  <div class="marquee">
+    <div class="marquee-track mono">
+      <span><del>leads going nowhere</del> → <ins>booked calls ✓</ins></span>
+      <span><del>6.2s load time</del> → <ins>1.1s ✓</ins></span>
+      <span><del>invoices typed by hand</del> → <ins>automated ✓</ins></span>
+      <span><del>0 analytics installed</del> → <ins>every dollar tracked ✓</ins></span>
+      <span><del>ten tools, zero sync</del> → <ins>one system ✓</ins></span>
+      <span><del>missed calls after 5pm</del> → <ins>24/7 booking ✓</ins></span>
+      <span><del>leads going nowhere</del> → <ins>booked calls ✓</ins></span>
+      <span><del>6.2s load time</del> → <ins>1.1s ✓</ins></span>
+      <span><del>invoices typed by hand</del> → <ins>automated ✓</ins></span>
+      <span><del>0 analytics installed</del> → <ins>every dollar tracked ✓</ins></span>
+      <span><del>ten tools, zero sync</del> → <ins>one system ✓</ins></span>
+      <span><del>missed calls after 5pm</del> → <ins>24/7 booking ✓</ins></span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S3 · WHAT WE FIX ================= -->
+<section id="fixes" class="fixes section" aria-label="What we fix">
+  <header class="section-head reveal">
+    <p class="eyebrow mono">// 01 — FAULT CATALOG</p>
+    <h2 class="glitch-line" data-text="Every business has broken parts.">Every business has broken parts.</h2>
+    <p class="section-sub">Hover a fault to see its fix. These are the four we repair most.</p>
+  </header>
+
+  <div class="fix-grid">
+    <article class="fix-card reveal" tabindex="0">
+      <p class="mono fix-id">FAULT 01 / WEB</p>
+      <h3>A website that's just&hellip; there.</h3>
+      <p class="symptom">Slow, invisible on Google, and it hasn't brought a customer in months.</p>
+      <div class="repair">
+        <p class="mono repair-tag">→ THE FIX</p>
+        <p>A fast, conversion-first site engineered to turn visits into calls and bookings.</p>
+      </div>
+    </article>
+
+    <article class="fix-card reveal" tabindex="0">
+      <p class="mono fix-id">FAULT 02 / AUTOMATION</p>
+      <h3>Your team is the API.</h3>
+      <p class="symptom">Copy-pasting between tools, retyping invoices, chasing follow-ups by memory.</p>
+      <div class="repair">
+        <p class="mono repair-tag">→ THE FIX</p>
+        <p>Workflows that run themselves — reminders, invoices, follow-ups, handoffs. Hours back, every week.</p>
+      </div>
+    </article>
+
+    <article class="fix-card reveal" tabindex="0">
+      <p class="mono fix-id">FAULT 03 / VISIBILITY</p>
+      <h3>Flying blind.</h3>
+      <p class="symptom">No tracking, no call attribution, no idea which ad or page actually pays.</p>
+      <div class="repair">
+        <p class="mono repair-tag">→ THE FIX</p>
+        <p>Analytics wired end to end. Every call, click and dollar counted — so decisions stop being guesses.</p>
+      </div>
+    </article>
+
+    <article class="fix-card reveal" tabindex="0">
+      <p class="mono fix-id">FAULT 04 / SYSTEMS</p>
+      <h3>Ten tools, zero teamwork.</h3>
+      <p class="symptom">Booking here, payments there, customers in a spreadsheet nobody trusts.</p>
+      <div class="repair">
+        <p class="mono repair-tag">→ THE FIX</p>
+        <p>Integrations and small internal tools that make your stack behave like one machine.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= S4 · PROCESS ================= -->
+<section id="process" class="process section" aria-label="How it works">
+  <header class="section-head reveal">
+    <p class="eyebrow mono">// 02 — THE PROCESS</p>
+    <h2 class="glitch-line" data-text="Click. And. Fixx.">Click. And. Fixx.</h2>
+    <p class="section-sub">The name is the process. Three steps, no sales fog.</p>
+  </header>
+
+  <div class="process-grid">
+    <article class="process-card reveal">
+      <p class="mono step-num">01</p>
+      <div class="process-visual scan-visual">
+        <i class="pv-bar"></i><i class="pv-line"></i><i class="pv-line short"></i>
+        <i class="pv-tile"></i><i class="pv-tile"></i>
+        <b class="sweep"></b>
+        <em class="mono" style="--x:14%;--y:34%">no tracking</em>
+        <em class="mono" style="--x:58%;--y:56%">6s load</em>
+        <em class="mono" style="--x:32%;--y:78%">leads leak here</em>
+      </div>
+      <h3>CLICK</h3>
+      <p>We inspect your business like engineers, not marketers — the site, the funnel, the busywork behind it.</p>
+    </article>
+
+    <article class="process-card reveal">
+      <p class="mono step-num">02</p>
+      <div class="process-visual report-visual mono">
+        <p class="rv-title">DIAGNOSIS REPORT</p>
+        <p class="rv-row"><span>performance</span><b>42/100</b></p>
+        <p class="rv-row"><span>tracking</span><b>missing</b></p>
+        <p class="rv-row"><span>hours lost/wk</span><b>~9</b></p>
+        <p class="rv-row"><span>est. leads lost</span><b>11/mo</b></p>
+      </div>
+      <h3>AND</h3>
+      <p>You get a free diagnosis report. Real numbers, ranked by what it's costing you. No obligation.</p>
+    </article>
+
+    <article class="process-card reveal">
+      <p class="mono step-num">03</p>
+      <div class="process-visual repair-visual">
+        <i class="pv-bar"></i><i class="pv-line"></i><i class="pv-line short"></i>
+        <i class="pv-tile"></i><i class="pv-tile"></i>
+        <b class="check">✓</b><b class="check">✓</b><b class="check">✓</b>
+      </div>
+      <h3>FI<span class="wrench-x">X</span><span class="wrench-x">X</span></h3>
+      <p>We build the fix — fast, measured, and priced before we start. Then we prove it worked.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= S5 · PROOF · THE REPAIR LOG ================= -->
+<section id="proof" class="proof section" aria-label="Case results">
+  <header class="section-head split reveal">
+    <div>
+      <p class="eyebrow mono">// 03 — THE REPAIR LOG</p>
+      <h2 class="glitch-line" data-text="Proof, not promises.">Proof, not promises.</h2>
+    </div>
+    <p class="section-sub">Three closed tickets from the log. Every fix measured before and after — that's the whole point.</p>
+  </header>
+
+  <div class="ticket-list">
+
+    <article class="ticket reveal">
+      <div class="ticket-top mono">
+        <span class="ticket-id">TICKET #0047 · CLOSED</span>
+        <span class="stamp" aria-hidden="true">FIXED ✓ VERIFIED</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-who">
+          <p class="mono muted">CLIENT-047 · HVAC SERVICES</p>
+          <h3>Regional HVAC Provider</h3>
+          <p class="ticket-note">Page-builder bloat, zero measurement. Rebuilt into a lead machine.</p>
+        </div>
+        <div class="ticket-metric mono" aria-label="Load time improved from 6.2 seconds to 1.1 seconds">
+          <span class="metric-label">LOAD TIME</span>
+          <span class="metric-pair">
+            <del>6.2s</del>
+            <i>→</i>
+            <b><span class="count" data-from="6.2" data-to="1.1" data-decimals="1">6.2</span>s</b>
+          </span>
+        </div>
+        <div class="ticket-cols mono">
+          <div class="diag">
+            <p class="col-tag">DIAGNOSED</p>
+            <ul>
+              <li>analytics not found</li>
+              <li>zero call tracking</li>
+              <li>Divi builder bloat</li>
+            </ul>
+          </div>
+          <div class="deliv">
+            <p class="col-tag">DELIVERED</p>
+            <ul>
+              <li>GA4 wired end to end</li>
+              <li>every call counted</li>
+              <li>clean hand-built site</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket reveal">
+      <div class="ticket-top mono">
+        <span class="ticket-id">TICKET #0053 · CLOSED</span>
+        <span class="stamp" aria-hidden="true">FIXED ✓ VERIFIED</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-who">
+          <p class="mono muted">CLIENT-053 · MULTI-LOCATION DENTAL</p>
+          <h3>Multi-Location Dental Group</h3>
+          <p class="ticket-note">Heavy pages, blocked overseas, nine locations out of sync. Made fast and global.</p>
+        </div>
+        <div class="ticket-metric mono" aria-label="Page weight reduced from 532 kilobytes to 68 kilobytes">
+          <span class="metric-label">PAGE WEIGHT</span>
+          <span class="metric-pair">
+            <del>532KB</del>
+            <i>→</i>
+            <b><span class="count" data-from="532" data-to="68">532</span>KB</b>
+          </span>
+        </div>
+        <div class="ticket-cols mono">
+          <div class="diag">
+            <p class="col-tag">DIAGNOSED</p>
+            <ul>
+              <li>532KB per page</li>
+              <li>blocked abroad</li>
+              <li>locations scattered</li>
+            </ul>
+          </div>
+          <div class="deliv">
+            <p class="col-tag">DELIVERED</p>
+            <ul>
+              <li>87% lighter pages</li>
+              <li>loads worldwide</li>
+              <li>one system, 9 in sync</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="ticket reveal">
+      <div class="ticket-top mono">
+        <span class="ticket-id">TICKET #0061 · CLOSED</span>
+        <span class="stamp" aria-hidden="true">FIXED ✓ VERIFIED</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-who">
+          <p class="mono muted">CLIENT-061 · DENTAL PRACTICE</p>
+          <h3>Independent Dental Practice</h3>
+          <p class="ticket-note">A 2017-era site hauling 119 raw images. Brought up to modern performance.</p>
+        </div>
+        <div class="ticket-metric mono" aria-label="Unoptimized images reduced from 119 to 0">
+          <span class="metric-label">RAW IMAGES</span>
+          <span class="metric-pair">
+            <del>119</del>
+            <i>→</i>
+            <b><span class="count" data-from="119" data-to="0">119</span></b>
+          </span>
+        </div>
+        <div class="ticket-cols mono">
+          <div class="diag">
+            <p class="col-tag">DIAGNOSED</p>
+            <ul>
+              <li>119 unoptimized images</li>
+              <li>2017-era assets</li>
+              <li>legacy delivery</li>
+            </ul>
+          </div>
+          <div class="deliv">
+            <p class="col-tag">DELIVERED</p>
+            <ul>
+              <li>WebP, properly sized</li>
+              <li>modern asset pipeline</li>
+              <li>fast on every device</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= S6 · PRICING ================= -->
+<section id="pricing" class="pricing section" aria-label="Engagements and pricing">
+  <header class="section-head reveal">
+    <p class="eyebrow mono">// 04 — FIXED SCOPE</p>
+    <h2 class="glitch-line" data-text="Clear work. Clear numbers.">Clear work. Clear numbers.</h2>
+  </header>
+
+  <div class="price-grid">
+    <article class="price-card reveal">
+      <p class="mono price-id">01 / FOCUSED</p>
+      <h3>Quick Fixx</h3>
+      <p>One broken thing, fixed. A landing page, an automation, your tracking. Shipped in days.</p>
+      <p class="price-amount">$1,200</p>
+      <a class="price-link mono" href="#diagnosis" data-cursor="start">START HERE ↗</a>
+    </article>
+    <article class="price-card featured reveal">
+      <p class="mono price-id">02 / COMPLETE</p>
+      <h3>Full Rebuild</h3>
+      <p>Your website and the systems around it — booking, tracking, follow-up — engineered as one.</p>
+      <p class="price-amount"><em>from</em> $2,800</p>
+      <a class="price-link mono" href="#diagnosis" data-cursor="start">REBUILD IT ↗</a>
+    </article>
+    <article class="price-card reveal">
+      <p class="mono price-id">03 / ONGOING</p>
+      <h3>Fixx Partner</h3>
+      <p>We keep everything running — and keep finding the next thing worth fixing.</p>
+      <p class="price-amount"><em>from</em> $250<em>/mo</em></p>
+      <a class="price-link mono" href="#diagnosis" data-cursor="start">STAY FIXED ↗</a>
+    </article>
+  </div>
+  <p class="pricing-note mono reveal">Fixed prices. Fixed timelines. Actually fixed businesses.</p>
+</section>
+
+<!-- ================= S7 · FOUNDER ================= -->
+<section class="founder section" aria-label="Founder">
+  <div class="founder-inner">
+    <div class="founder-copy reveal">
+      <p class="eyebrow mono">// THE PERSON DOING THE WORK</p>
+      <h2>Built by an engineer,<br />not an account manager.</h2>
+      <p><strong>Akki</strong> — Senior Full Stack Engineer. Java, Python, React, AWS. Ships production systems for financial infrastructure by day; fixes small businesses that deserve better tools by night.</p>
+      <div class="stack-tags mono"><span>JAVA</span><span>PYTHON</span><span>REACT</span><span>AWS</span></div>
+    </div>
+    <div class="terminal reveal mono" aria-hidden="true">
+      <header><i></i><i></i><i></i><span>diagnose.sh</span></header>
+      <div class="terminal-body">
+        <p><span class="t-user">akki@clickandfixx</span>:~$ audit yourbusiness.com</p>
+        <p class="t-dim">scanning website ......... <b>3 faults</b></p>
+        <p class="t-dim">scanning lead flow ....... <b>leaking</b></p>
+        <p class="t-dim">scanning busywork ........ <b>9 hrs/wk</b></p>
+        <p>$ <span id="terminalType"></span><span class="t-cursor">▌</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= S8 · FINAL CTA ================= -->
+<section id="diagnosis" class="final section" aria-label="Get a free diagnosis">
+  <div class="final-mark reveal" id="finalMark" tabindex="0" role="button" aria-label="Snap the icon straight">
+    <canvas id="ctaCanvas" width="140" height="140"></canvas>
+    <span class="mono">HOVER TO FIX</span>
+  </div>
+  <div class="final-copy reveal">
+    <p class="eyebrow mono">// YOUR TURN</p>
+    <h2 class="glitch-line" data-text="One click. That's how this started.">One click. That's how this started.</h2>
+    <p class="section-sub">Tell us where the problem lives. We'll send back real findings — no pitch deck, no mystery.</p>
+  </div>
+
+  <form class="diagnosis-form reveal" id="diagnosisForm" novalidate>
+    <div class="field">
+      <label for="cf-name"><span class="mono">YOUR NAME</span></label>
+      <input id="cf-name" name="name" autocomplete="name" required minlength="2"
+             placeholder="Jane Smith" aria-describedby="err-name" />
+      <small class="field-error" id="err-name" role="alert"></small>
+    </div>
+
+    <div class="field">
+      <label for="cf-email"><span class="mono">EMAIL</span></label>
+      <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" required
+             placeholder="jane@company.com" aria-describedby="err-email" />
+      <small class="field-error" id="err-email" role="alert"></small>
+    </div>
+
+    <div class="field">
+      <label for="cf-website"><span class="mono">WEBSITE <em>(if you have one)</em></span></label>
+      <input id="cf-website" name="website" type="text" inputmode="url" autocomplete="url"
+             placeholder="yoursite.com" aria-describedby="err-website" />
+      <small class="field-error" id="err-website" role="alert"></small>
+    </div>
+
+    <div class="field">
+      <label for="cf-problem"><span class="mono">WHAT FEELS BROKEN?</span></label>
+      <select id="cf-problem" name="problem" required aria-describedby="err-problem">
+        <option value="" selected disabled>Pick the closest</option>
+        <option>My website</option>
+        <option>Leads / phone not ringing</option>
+        <option>Too much manual busywork</option>
+        <option>My tools don't talk to each other</option>
+        <option>Not sure — diagnose everything</option>
+      </select>
+      <small class="field-error" id="err-problem" role="alert"></small>
+    </div>
+
+    <button class="btn btn-primary" type="submit" data-cursor="start">
+      <span class="btn-label">Run my diagnosis</span>
+    </button>
+    <p class="mono form-note">// TAKES 2 MINUTES — REAL FINDINGS, NO SPAM</p>
+    <output class="form-status mono" aria-live="polite"></output>
+  </form>
+</section>
+
+</main>
+
+<footer class="site-footer mono">
+  <span>ClickAndFixx © 2026 — measured problems, engineered fixes</span>
+  <a href="mailto:hello@clickandfixx.com">hello@clickandfixx.com</a>
+  <span class="status-chip footer-chip"><span class="dot"></span>all systems fixed</span>
+</footer>
+
+<script>
+  window.FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxWCzOi8V_K9myBVFyjkyE7hRqwJxjafJb6MDW-ziQ5YEybBlAutwRB3tOP_wu7Rllp/exec";
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script type="module" src="js/scene.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
