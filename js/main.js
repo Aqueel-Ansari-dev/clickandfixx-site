@@ -112,6 +112,38 @@ document.getElementById("fixPrompt")?.addEventListener("keydown", (e) => {
 });
 
 // ------------------------------------------------------------
+// Mobile nav toggle
+// ------------------------------------------------------------
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+if (navToggle && navLinks) {
+  const closeNav = () => {
+    navToggle.setAttribute("aria-expanded", "false");
+    navLinks.classList.remove("is-open");
+  };
+  const openNav = () => {
+    navToggle.setAttribute("aria-expanded", "true");
+    navLinks.classList.add("is-open");
+  };
+  navToggle.addEventListener("click", () => {
+    if (navLinks.classList.contains("is-open")) closeNav();
+    else openNav();
+  });
+  navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeNav();
+  });
+  document.addEventListener("click", (e) => {
+    if (!navLinks.classList.contains("is-open")) return;
+    if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+    closeNav();
+  });
+  matchMedia("(min-width: 861px)").addEventListener("change", (e) => {
+    if (e.matches) closeNav();
+  });
+}
+
+// ------------------------------------------------------------
 // Custom cursor
 // ------------------------------------------------------------
 const ring = document.querySelector(".cursor-ring");
