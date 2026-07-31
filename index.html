@@ -407,42 +407,69 @@
   </div>
 
   <form class="diagnosis-form reveal" id="diagnosisForm" novalidate>
+    <i class="fc-tick fc-tl" aria-hidden="true"></i><i class="fc-tick fc-tr" aria-hidden="true"></i>
+    <i class="fc-tick fc-bl" aria-hidden="true"></i><i class="fc-tick fc-br" aria-hidden="true"></i>
+
+    <header class="form-head mono">
+      <span class="form-head-dots"><i></i><i></i><i></i></span>
+      <span class="form-head-title">intake.sh — new diagnostic</span>
+      <span class="form-head-id" id="formTicket">TICKET #PENDING</span>
+    </header>
+
+    <div class="form-meter mono" aria-hidden="true">
+      <span class="fm-label">SIGNAL</span>
+      <span class="fm-track"><i class="fm-fill" id="formMeterFill"></i></span>
+      <span class="fm-value" id="formMeterValue">0/4</span>
+    </div>
+
     <div class="field">
-      <label for="cf-name"><span class="mono">YOUR NAME</span></label>
-      <input id="cf-name" name="name" autocomplete="name" required minlength="2"
-             placeholder="Jane Smith" aria-describedby="err-name" />
+      <label for="cf-name"><span class="mono field-num">01</span><span class="mono">YOUR NAME</span></label>
+      <span class="field-io">
+        <input id="cf-name" name="name" autocomplete="name" required minlength="2"
+               placeholder="Jane Smith" aria-describedby="err-name" />
+        <b class="field-status mono" aria-hidden="true">&ndash;&ndash;</b>
+      </span>
       <small class="field-error" id="err-name" role="alert"></small>
     </div>
 
     <div class="field">
-      <label for="cf-email"><span class="mono">EMAIL</span></label>
-      <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" required
-             placeholder="jane@company.com" aria-describedby="err-email" />
+      <label for="cf-email"><span class="mono field-num">02</span><span class="mono">EMAIL</span></label>
+      <span class="field-io">
+        <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" required
+               placeholder="jane@company.com" aria-describedby="err-email" />
+        <b class="field-status mono" aria-hidden="true">&ndash;&ndash;</b>
+      </span>
       <small class="field-error" id="err-email" role="alert"></small>
     </div>
 
     <div class="field">
-      <label for="cf-website"><span class="mono">WEBSITE <em>(if you have one)</em></span></label>
-      <input id="cf-website" name="website" type="text" inputmode="url" autocomplete="url"
-             placeholder="yoursite.com" aria-describedby="err-website" />
+      <label for="cf-website"><span class="mono field-num">03</span><span class="mono">WEBSITE <em>(if you have one)</em></span></label>
+      <span class="field-io">
+        <input id="cf-website" name="website" type="text" inputmode="url" autocomplete="url"
+               placeholder="yoursite.com" aria-describedby="err-website" />
+        <b class="field-status mono" aria-hidden="true">&ndash;&ndash;</b>
+      </span>
       <small class="field-error" id="err-website" role="alert"></small>
     </div>
 
     <div class="field">
-      <label for="cf-problem"><span class="mono">WHAT FEELS BROKEN?</span></label>
-      <select id="cf-problem" name="problem" required aria-describedby="err-problem">
-        <option value="" selected disabled>Pick the closest</option>
-        <option>My website</option>
-        <option>Leads / phone not ringing</option>
-        <option>Too much manual busywork</option>
-        <option>My tools don't talk to each other</option>
-        <option>Not sure — diagnose everything</option>
-      </select>
+      <label for="cf-problem"><span class="mono field-num">04</span><span class="mono">WHAT FEELS BROKEN?</span></label>
+      <span class="field-io">
+        <select id="cf-problem" name="problem" required aria-describedby="err-problem">
+          <option value="" selected disabled>Pick the closest</option>
+          <option>My website</option>
+          <option>Leads / phone not ringing</option>
+          <option>Too much manual busywork</option>
+          <option>My tools don't talk to each other</option>
+          <option>Not sure — diagnose everything</option>
+        </select>
+        <b class="field-status mono" aria-hidden="true">&ndash;&ndash;</b>
+      </span>
       <small class="field-error" id="err-problem" role="alert"></small>
     </div>
 
-    <button class="btn btn-primary" type="submit" data-cursor="start">
-      <span class="btn-label">Run my diagnosis</span>
+    <button class="btn btn-primary form-submit" type="submit" data-cursor="start">
+      <span class="btn-label"><span class="mono form-submit-prompt">&gt;</span> Run my diagnosis</span>
     </button>
     <p class="mono form-note">// TAKES 2 MINUTES — REAL FINDINGS, NO SPAM</p>
     <output class="form-status mono" aria-live="polite"></output>

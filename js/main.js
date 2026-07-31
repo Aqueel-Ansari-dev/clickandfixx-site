@@ -259,7 +259,27 @@ if (form) {
   const status = form.querySelector(".form-status");
   const submitBtn = form.querySelector("button[type=submit]");
   const btnLabel = submitBtn.querySelector(".btn-label");
-  const defaultBtnText = btnLabel.textContent;
+  const defaultBtnHTML = btnLabel.innerHTML;
+
+  // Ticket id + live signal meter — the form reads like an open diagnostic ticket
+  const ticketEl = document.getElementById("formTicket");
+  const ticketNum = Math.floor(1000 + Math.random() * 9000);
+  if (ticketEl) ticketEl.textContent = `TICKET #${ticketNum} · OPEN`;
+
+  const meterFill = document.getElementById("formMeterFill");
+  const meterValue = document.getElementById("formMeterValue");
+  const requiredInputs = [...form.querySelectorAll("input, select")].filter((el) => el.required);
+
+  function updateMeter() {
+    if (!meterFill) return;
+    const done = requiredInputs.filter((el) => el.checkValidity() && el.value.trim() !== "").length;
+    const total = requiredInputs.length;
+    meterFill.style.width = `${(done / total) * 100}%`;
+    meterFill.classList.toggle("is-complete", done === total);
+    meterValue.textContent = `${done}/${total}`;
+    if (ticketEl) ticketEl.textContent = `TICKET #${ticketNum} · ${done === total ? "READY" : "OPEN"}`;
+  }
+  updateMeter();
 
   const MESSAGES = {
     name: {
@@ -294,10 +314,14 @@ if (form) {
   function validateField(input, { showValid = true } = {}) {
     const wrap = fieldWrap(input);
     const errorEl = wrap.querySelector(".field-error");
+    const statusEl = wrap.querySelector(".field-status");
     const ok = input.checkValidity();
+    const isValid = ok && showValid && input.value.trim() !== "";
     wrap.classList.toggle("is-invalid", !ok);
-    wrap.classList.toggle("is-valid", ok && showValid && input.value.trim() !== "");
+    wrap.classList.toggle("is-valid", isValid);
     errorEl.textContent = ok ? "" : messageFor(input);
+    if (statusEl) statusEl.textContent = isValid ? "OK" : !ok ? "ERR" : "––";
+    updateMeter();
     return ok;
   }
 
@@ -327,6 +351,7 @@ if (form) {
     input.addEventListener("blur", () => validateField(input));
     input.addEventListener("input", () => {
       if (fieldWrap(input).classList.contains("is-invalid")) validateField(input);
+      else updateMeter();
     });
     input.addEventListener("change", () => validateField(input));
   });
@@ -357,13 +382,20 @@ if (form) {
     btnLabel.textContent = "Sending…";
     status.textContent = "";
 
+    function resetFields() {
+      form.reset();
+      form.querySelectorAll(".field").forEach((f) => f.classList.remove("is-valid", "is-invalid"));
+      form.querySelectorAll(".field-status").forEach((s) => { s.textContent = "––"; });
+      updateMeter();
+    }
+
     if (!window.FORM_ENDPOINT) {
       status.textContent = "Thanks — we'll send your diagnosis shortly.";
       submitBtn.disabled = false;
       submitBtn.classList.remove("is-sending");
-      btnLabel.textContent = defaultBtnText;
-      form.reset();
-      form.querySelectorAll(".field").forEach((f) => f.classList.remove("is-valid", "is-invalid"));
+      btnLabel.innerHTML = defaultBtnHTML;
+      resetFields();
+      if (ticketEl) ticketEl.textContent = `TICKET #${ticketNum} · CLOSED`;
       return;
     }
 
@@ -375,15 +407,15 @@ if (form) {
       });
       if (!res.ok) throw new Error("bad status");
       status.textContent = "Thanks — we'll send your diagnosis shortly.";
-      form.reset();
-      form.querySelectorAll(".field").forEach((f) => f.classList.remove("is-valid", "is-invalid"));
+      resetFields();
+      if (ticketEl) ticketEl.textContent = `TICKET #${ticketNum} · CLOSED`;
     } catch {
       status.textContent = "Couldn't send. Email hello@clickandfixx.com instead.";
       status.classList.add("error");
     } finally {
       submitBtn.disabled = false;
       submitBtn.classList.remove("is-sending");
-      btnLabel.textContent = defaultBtnText;
+      btnLabel.innerHTML = defaultBtnHTML;
     }
   });
 }
