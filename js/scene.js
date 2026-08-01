@@ -109,9 +109,10 @@ function init() {
   lamp.position.set(5, 4, 6);
   scene.add(lamp);
 
-  // The whole system lives right-of-center so hero copy owns the left.
+  // Desktop: system lives right-of-center so hero copy owns the left.
+  // Mobile: it has its own boxed canvas below the copy, so it's centered.
   const root = new THREE.Group();
-  root.position.set(mobile ? 0 : 2.5, mobile ? 1.3 : 0.1, 0);
+  root.position.set(mobile ? 0 : 2.5, mobile ? 0 : 0.1, 0);
   scene.add(root);
 
   // ----------------------------------------------------------

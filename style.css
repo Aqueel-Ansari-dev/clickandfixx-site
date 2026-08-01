@@ -253,6 +253,31 @@ body.is-fixed .status-chip { color: var(--fixed); }
     radial-gradient(ellipse at 30% 80%, rgba(255,71,87,0.05), transparent 50%);
 }
 
+/* Below this width the 3D system gets its own box under the copy
+   instead of sitting full-bleed behind it — the two were colliding. */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding: 104px var(--pad) 36px;
+    gap: 28px;
+  }
+  .hero-content { order: 1; }
+  #heroCanvas {
+    position: relative; inset: auto;
+    order: 2;
+    width: 100%;
+    height: min(64vw, 320px);
+    min-height: 220px;
+    border: 1px solid var(--seam);
+    border-radius: 12px;
+    background: var(--panel);
+  }
+  .hero.no-webgl #heroCanvas { display: none; }
+  .scroll-cue { display: none; }
+}
+
 .hero-content {
   position: relative; z-index: 3;
   max-width: var(--max);
