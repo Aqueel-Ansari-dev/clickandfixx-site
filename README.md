@@ -93,10 +93,11 @@ Breakpoints of note in `style.css`:
 - smaller breakpoints (`620px`, `560px`, `520px`, `420px`) fine-tune
   individual components (ticket grid, status chip, form header)
 
-`js/scene.js` computes `mobile` once at load from `innerWidth < 700`. It
-does not react to live resizing across that threshold (a rotated phone
-won't switch layouts without a reload) — that's a deliberate simplicity
-tradeoff, not a bug.
+`js/scene.js` computes `mobile` once at load from `innerWidth < 700`, but
+the CSS boxed/full-bleed hero layout reacts live to width changes. To keep
+the two in sync if the viewport crosses 700px after load (desktop window
+resize, tablet rotation), `scene.js` reloads the page once when that
+happens rather than running with a stale node count/layout.
 
 ## Deployment
 

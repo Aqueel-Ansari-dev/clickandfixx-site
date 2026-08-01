@@ -116,9 +116,14 @@ Two mobile-specific behaviors to check after any layout change:
    full-bleed background into a bordered panel *below* the headline
    (rather than behind it — the two used to overlap and were hard to
    read). If you change hero markup or the `700px` breakpoint, keep the
-   two in sync — the CSS breakpoint and `scene.js`'s `innerWidth < 700`
-   check must match, or the layout and the node positions/count will
-   disagree.
+   CSS breakpoint and `scene.js`'s `innerWidth < 700` check in sync, or
+   the layout and the node positions/count will disagree. `scene.js`
+   guards against exactly that by reloading once if the viewport crosses
+   700px after load (e.g. testing by resizing a desktop browser window
+   without refreshing) — if you ever see the full 8-node desktop layout
+   crammed into the mobile boxed panel, that's this mismatch, and it
+   should self-correct on the next resize past the breakpoint or a
+   manual refresh.
 
 ### If you don't have a real phone or working device emulation handy
 

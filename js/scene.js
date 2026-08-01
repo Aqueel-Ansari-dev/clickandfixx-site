@@ -23,6 +23,16 @@ const mobile = innerWidth < 700;
 const canvas = document.getElementById("heroCanvas");
 const hero = document.getElementById("top");
 
+// The node count/layout below is decided once, at load, from `mobile`.
+// The CSS boxed-vs-full-bleed hero layout reacts live to width changes,
+// so if the viewport crosses 700px after load (window resize while
+// testing, or a tablet rotation) the two fall out of sync — the CSS
+// panel switches but the node set doesn't. Reload once when that
+// happens so everything re-derives against the new width.
+addEventListener("resize", () => {
+  if ((innerWidth < 700) !== mobile) location.reload();
+});
+
 let fixed = false;
 let fixStart = 0;
 
